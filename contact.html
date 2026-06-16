@@ -6,6 +6,10 @@
   <title>Contact Us | OSP Contractors</title>
   <meta name="description" content="Get in touch with OSP Contractors. Offices in Athens and Trikala. Call +30 210 577 2107 or email info@osp-contractors.gr.">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <style>
+    #contact-map { height: 610px; width: 100%; }
+  </style>
 </head>
 <body>
 
@@ -30,89 +34,50 @@
 
   <main id="main-content">
 
-    <div class="page-hero">
-      <h1>Contact Us</h1>
-      <p>We'd love to hear about your project</p>
-    </div>
+    <!-- Full-width map -->
+    <div id="contact-map" aria-label="Map showing OSP Contractors office locations in Athens and Trikala"></div>
 
-    <section class="section" aria-labelledby="contact-heading">
+    <!-- Dark strip -->
+    <div class="contact-strip" aria-hidden="true"></div>
+
+    <!-- Contact section: address left, form right -->
+    <section class="section contact-section" aria-labelledby="contact-heading">
       <div class="container">
-        <h2 class="section-title visually-hidden" id="contact-heading">Contact Information and Form</h2>
         <div class="contact-grid">
 
-          <!-- Contact Details -->
-          <div class="contact-info">
-            <h2 style="font-size:1.5rem; font-weight:800; color:var(--navy); margin-bottom:1.5rem;">
-              Get in Touch
-            </h2>
-
-            <div class="contact-detail">
-              <div class="contact-detail-icon" aria-hidden="true">&#128205;</div>
-              <div class="contact-detail-text">
-                <strong>Athens Office</strong>
-                <address style="font-style:normal;">
-                  <p>Filadelfeias 161 &amp; Leukados</p>
-                  <p>PO 136 71, Acharnes, Athens</p>
-                </address>
-              </div>
-            </div>
-
-            <div class="contact-detail">
-              <div class="contact-detail-icon" aria-hidden="true">&#128205;</div>
-              <div class="contact-detail-text">
-                <strong>Trikala Office</strong>
-                <address style="font-style:normal;">
-                  <p>Vasili Tsitsani 41</p>
-                  <p>PO 421 00, Trikala</p>
-                </address>
-              </div>
-            </div>
-
-            <div class="contact-detail">
-              <div class="contact-detail-icon" aria-hidden="true">&#128222;</div>
-              <div class="contact-detail-text">
-                <strong>Phone</strong>
-                <p><a href="tel:+302105772107">+30 210 577 2107</a></p>
-                <p><a href="tel:+302102850515">+30 210 285 0515</a></p>
-              </div>
-            </div>
-
-            <div class="contact-detail">
-              <div class="contact-detail-icon" aria-hidden="true">&#9993;</div>
-              <div class="contact-detail-text">
-                <strong>Email</strong>
-                <p><a href="mailto:info@osp-contractors.gr">info@osp-contractors.gr</a></p>
-              </div>
-            </div>
+          <!-- Address block -->
+          <div class="contact-info-block" role="complementary" aria-label="Office locations and contact details">
+            <address style="font-style:normal;">
+              <p><strong>Athens</strong></p>
+              <p>Filadelfeias 161 &amp; Leukados<br>PO 136 71, Acharnes</p>
+              <br>
+              <p><strong>Trikala</strong></p>
+              <p>Vasili Tsitsani 41<br>PO 421 00, Trikala</p>
+              <br>
+              <p>email: <a href="mailto:info@osp-contractors.gr">info@osp-contractors.gr</a></p>
+              <p>tel: <a href="tel:+302105772107">+30 210 577 2107</a></p>
+            </address>
           </div>
 
-          <!-- Contact Form -->
+          <!-- Form block -->
           <div class="contact-form-wrapper">
-            <h2>Send Us a Message</h2>
+            <h1 class="contact-heading-large" id="contact-heading">Contact Us</h1>
             <form action="#" method="post" novalidate aria-label="Contact form">
+
               <div class="form-group">
-                <label for="full-name">
-                  Full Name <span class="required" aria-label="required">*</span>
-                </label>
                 <input
                   type="text"
                   id="full-name"
-                  name="full_name"
+                  name="name"
                   autocomplete="name"
                   required
                   aria-required="true"
-                  aria-describedby="name-hint"
-                  placeholder="John Smith"
+                  aria-label="Name"
+                  placeholder="Name"
                 >
-                <span id="name-hint" style="font-size:0.82rem; color:var(--text-muted); margin-top:0.3rem; display:block;">
-                  Enter your first and last name.
-                </span>
               </div>
 
               <div class="form-group">
-                <label for="email">
-                  Email Address <span class="required" aria-label="required">*</span>
-                </label>
                 <input
                   type="email"
                   id="email"
@@ -120,45 +85,31 @@
                   autocomplete="email"
                   required
                   aria-required="true"
-                  placeholder="you@example.com"
+                  aria-label="Email"
+                  placeholder="Email"
                 >
               </div>
 
               <div class="form-group">
-                <label for="phone">Phone Number</label>
-                <input
-                  type="tel"
-                  id="phone"
-                  name="phone"
-                  autocomplete="tel"
-                  placeholder="+30 210 000 0000"
-                >
-              </div>
-
-              <div class="form-group">
-                <label for="subject">
-                  Subject <span class="required" aria-label="required">*</span>
-                </label>
                 <input
                   type="text"
                   id="subject"
                   name="subject"
                   required
                   aria-required="true"
-                  placeholder="Project enquiry"
+                  aria-label="Subject"
+                  placeholder="Subject"
                 >
               </div>
 
               <div class="form-group">
-                <label for="message">
-                  Message <span class="required" aria-label="required">*</span>
-                </label>
                 <textarea
                   id="message"
                   name="message"
                   required
                   aria-required="true"
-                  placeholder="Tell us about your project or enquiry..."
+                  aria-label="Message"
+                  placeholder="Message"
                 ></textarea>
               </div>
 
@@ -166,28 +117,22 @@
                 <input
                   type="checkbox"
                   id="gdpr"
-                  name="gdpr"
+                  name="agreement"
                   required
                   aria-required="true"
                   aria-describedby="gdpr-desc"
                 >
                 <label for="gdpr" id="gdpr-desc">
-                  I have read and agree to the
-                  <a href="privacy-policy.html">Privacy Policy</a>.
-                  I consent to OSP Contractors processing my personal data in accordance
-                  with Article 13 of the GDPR.
-                  <span class="required" aria-label="required">*</span>
+                  I agree with the <a href="privacy-policy.html">Terms of Use and Privacy Policy</a>
+                  and I declare that I have read the information that is required in accordance with
+                  <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2016.119.01.0001.01.ENG&toc=OJ:L:2016:119:TOC" target="_blank" rel="noopener">Article 13 of GDPR.</a>
                 </label>
               </div>
 
               <div class="form-submit">
-                <button type="submit" class="btn btn-primary">Send Message</button>
+                <button type="submit" class="btn btn-success">Send Message</button>
               </div>
 
-              <p style="font-size:0.82rem; color:var(--text-muted); margin-top:1rem;">
-                Fields marked <span aria-hidden="true" style="color:#c0392b;">*</span>
-                <span class="sr-only">with an asterisk</span> are required.
-              </p>
             </form>
           </div>
 
@@ -270,5 +215,17 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLcE=" crossorigin=""></script>
+  <script>
+    (function () {
+      var map = L.map('contact-map', { scrollWheelZoom: false }).setView([38.85, 22.9], 7);
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+        maxZoom: 19
+      }).addTo(map);
+      L.marker([38.0911218, 23.7492388]).addTo(map).bindPopup('<strong>OSP Contractors</strong><br>Athens<br>Filadelfeias 161 &amp; Leukados, Acharnes');
+      L.marker([39.554066, 21.775876]).addTo(map).bindPopup('<strong>OSP Contractors</strong><br>Trikala<br>Vasili Tsitsani 41');
+    })();
+  </script>
 </body>
 </html>
