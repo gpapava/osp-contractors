@@ -721,6 +721,20 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* 6-col photo gallery (default) */
+/* Project section header (icon left, info right) */
+.proj-header {
+  display: grid;
+  grid-template-columns: 260px 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+.proj-icon img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.proj-info .svc-heading { margin-bottom: 0.75rem; }
+
 .svc-gallery {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -728,6 +742,7 @@ a { color: inherit; text-decoration: none; }
 }
 .svc-gallery--2x2 { grid-template-columns: repeat(2, 1fr); }
 .svc-gallery--3col { grid-template-columns: repeat(3, 1fr); }
+.svc-gallery--4col { grid-template-columns: repeat(4, 1fr); }
 .svc-gallery-item img {
   width: 100%;
   height: 220px;
@@ -746,6 +761,8 @@ a { color: inherit; text-decoration: none; }
   .about-grid, .company-intro, .company-about-grid, .company-fleet-grid, .contact-grid,
   .svc-two-col { grid-template-columns: 1fr; }
   .contact-info-block { padding-top: 0; text-align: left; }
+  .proj-header { grid-template-columns: 1fr; }
+  .svc-gallery--4col { grid-template-columns: repeat(2, 1fr); }
   .svc-two-col--reverse { direction: ltr; }
   .svc-photo-row { grid-template-columns: repeat(2, 1fr); }
   .svc-gallery { grid-template-columns: repeat(2, 1fr); }
