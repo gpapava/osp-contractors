@@ -30,6 +30,46 @@ if (toggle && navList) {
   });
 }
 
+// Company page image carousel
+(function () {
+  const track = document.getElementById('companyCarouselTrack');
+  const dotsContainer = document.getElementById('carouselDots');
+  const prevBtn = document.getElementById('carouselPrev');
+  const nextBtn = document.getElementById('carouselNext');
+  if (!track) return;
+
+  const slides = track.querySelectorAll('.company-carousel-slide');
+  let current = 0;
+
+  // Build dots
+  slides.forEach((_, i) => {
+    const dot = document.createElement('button');
+    dot.className = 'carousel-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Go to image ' + (i + 1));
+    dot.setAttribute('role', 'tab');
+    dot.addEventListener('click', () => goTo(i));
+    dotsContainer.appendChild(dot);
+  });
+
+  function goTo(index) {
+    current = (index + slides.length) % slides.length;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dotsContainer.querySelectorAll('.carousel-dot').forEach((d, i) =>
+      d.classList.toggle('active', i === current)
+    );
+  }
+
+  prevBtn.addEventListener('click', () => goTo(current - 1));
+  nextBtn.addEventListener('click', () => goTo(current + 1));
+
+  // Auto-advance every 4.5 s
+  let timer = setInterval(() => goTo(current + 1), 4500);
+  track.closest('.company-carousel').addEventListener('mouseenter', () => clearInterval(timer));
+  track.closest('.company-carousel').addEventListener('mouseleave', () => {
+    timer = setInterval(() => goTo(current + 1), 4500);
+  });
+})();
+
 // Contact form: prevent default and show confirmation (placeholder)
 const contactForm = document.querySelector('form[aria-label="Contact form"]');
 if (contactForm) {
