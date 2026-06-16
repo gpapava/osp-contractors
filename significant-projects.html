@@ -35,8 +35,18 @@
       <p>A selection of key infrastructure projects delivered across Greece</p>
     </div>
 
+    <!-- Project filter bar -->
+    <div class="proj-filter-bar" role="group" aria-label="Filter projects by category">
+      <button class="proj-filter-btn active" data-filter="all">All</button>
+      <button class="proj-filter-btn" data-filter="ftth">FTTH</button>
+      <button class="proj-filter-btn" data-filter="nga">NGA FTTC</button>
+      <button class="proj-filter-btn" data-filter="adhoc">Ad-Hoc</button>
+      <button class="proj-filter-btn" data-filter="recovery">Recovery</button>
+      <button class="proj-filter-btn" data-filter="pilot">Pilot</button>
+    </div>
+
     <!-- 1. FTTH Network Deployments -->
-    <section class="svc-section section-alt" id="ftth-deployments" aria-labelledby="ftth-heading">
+    <section class="svc-section section-alt" id="ftth-deployments" data-category="ftth" aria-labelledby="ftth-heading">
       <div class="container">
         <div class="proj-header">
           <div class="proj-icon">
@@ -69,7 +79,7 @@
     </section>
 
     <!-- 2. FTTH In-House Building Connections -->
-    <section class="svc-section" id="ftth-inhouse" aria-labelledby="inhouse-heading">
+    <section class="svc-section" id="ftth-inhouse" data-category="ftth" aria-labelledby="inhouse-heading">
       <div class="container">
         <div class="proj-header">
           <div class="proj-icon">
@@ -100,7 +110,7 @@
     </section>
 
     <!-- 3. NGA FTTC Networks Development -->
-    <section class="svc-section section-alt" id="nga-fttc" aria-labelledby="nga-heading">
+    <section class="svc-section section-alt" id="nga-fttc" data-category="nga" aria-labelledby="nga-heading">
       <div class="container">
         <div class="proj-header">
           <div class="proj-icon">
@@ -133,7 +143,7 @@
     </section>
 
     <!-- 4. Business Customers Ad-Hoc Projects -->
-    <section class="svc-section" id="adhoc" aria-labelledby="adhoc-heading">
+    <section class="svc-section" id="adhoc" data-category="adhoc" aria-labelledby="adhoc-heading">
       <div class="container">
         <div class="proj-header">
           <div class="proj-icon">
@@ -165,7 +175,7 @@
     </section>
 
     <!-- 5. Copper Cable Recovery -->
-    <section class="svc-section section-alt" id="copper-recovery" aria-labelledby="copper-heading">
+    <section class="svc-section section-alt" id="copper-recovery" data-category="recovery" aria-labelledby="copper-heading">
       <div class="container">
         <div class="proj-header">
           <div class="proj-icon">
@@ -197,7 +207,7 @@
     </section>
 
     <!-- 6. Pilot FTTH Deployment — Rhodes -->
-    <section class="svc-section" id="rhodes" aria-labelledby="rhodes-heading">
+    <section class="svc-section" id="rhodes" data-category="pilot" aria-labelledby="rhodes-heading">
       <div class="container">
         <div class="proj-header">
           <div class="proj-icon">
@@ -230,7 +240,7 @@
     </section>
 
     <!-- 7. Pilot Smart City Project — Trikala -->
-    <section class="svc-section section-alt" id="trikala" aria-labelledby="trikala-heading">
+    <section class="svc-section section-alt" id="trikala" data-category="pilot" aria-labelledby="trikala-heading">
       <div class="container">
         <div class="proj-header">
           <div class="proj-icon">

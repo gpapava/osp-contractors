@@ -70,6 +70,33 @@ if (toggle && navList) {
   });
 })();
 
+// Significant projects filter
+(function () {
+  var btns = document.querySelectorAll('.proj-filter-btn');
+  if (!btns.length) return;
+
+  var sections = document.querySelectorAll('[data-category]');
+
+  btns.forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var filter = btn.getAttribute('data-filter');
+
+      // Update active button
+      btns.forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+
+      // Show/hide sections
+      sections.forEach(function (sec) {
+        if (filter === 'all' || sec.getAttribute('data-category') === filter) {
+          sec.classList.remove('proj-section-hidden');
+        } else {
+          sec.classList.add('proj-section-hidden');
+        }
+      });
+    });
+  });
+})();
+
 // Contact form: prevent default and show confirmation (placeholder)
 const contactForm = document.querySelector('form[aria-label="Contact form"]');
 if (contactForm) {
