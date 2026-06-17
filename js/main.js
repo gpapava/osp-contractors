@@ -30,6 +30,27 @@ if (toggle && navList) {
   });
 }
 
+// Hero video pause/play toggle (WCAG 2.2.2 Pause, Stop, Hide)
+(function () {
+  const btn = document.getElementById('heroVideoToggle');
+  const video = document.querySelector('.hero-video');
+  if (!btn || !video) return;
+
+  btn.addEventListener('click', function () {
+    if (video.paused) {
+      video.play();
+      btn.setAttribute('aria-pressed', 'false');
+      btn.setAttribute('aria-label', 'Pause background video');
+      btn.querySelector('span').innerHTML = '&#9646;&#9646;';
+    } else {
+      video.pause();
+      btn.setAttribute('aria-pressed', 'true');
+      btn.setAttribute('aria-label', 'Play background video');
+      btn.querySelector('span').innerHTML = '&#9654;';
+    }
+  });
+})();
+
 // Company page image carousel
 (function () {
   const track = document.getElementById('companyCarouselTrack');
