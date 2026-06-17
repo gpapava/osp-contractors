@@ -539,6 +539,19 @@ a { color: inherit; text-decoration: none; }
 }
 .btn-success:hover { background: #449d44; border-color: #449d44; }
 
+/* === ESPA / EU Co-funding Banner (Regulation EU 1060/2021) === */
+.espa-banner {
+  background: #ffffff;
+  border-top: 1px solid #e0e0e0;
+  padding: 1.5rem 1.5rem;
+}
+.espa-banner img {
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto;
+  display: block;
+}
+
 /* === Footer === */
 .site-footer {
   background: var(--navy-dark);

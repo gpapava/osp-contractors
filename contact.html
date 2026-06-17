@@ -6,9 +6,10 @@
   <title>Contact Us | OSP Contractors</title>
   <meta name="description" content="Get in touch with OSP Contractors. Offices in Athens and Trikala. Call +30 210 577 2107 or email info@osp-contractors.gr.">
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <style>
     #contact-map { height: 610px; width: 100%; }
+    .leaflet-container img { max-width: none !important; }
   </style>
 </head>
 <body>
@@ -142,6 +143,14 @@
 
   </main>
 
+  <!-- EU / ESPA Co-funding (Regulation EU 1060/2021) -->
+  <div class="espa-banner" role="complementary" aria-label="Ευρωπαϊκή χρηματοδότηση — European Union co-funding">
+    <div class="container">
+      <img src="images/eu/espa-header.png"
+           alt="Με τη συγχρηματοδότηση της Ευρωπαϊκής Ένωσης — ΕΣΠΑ 2021-2027 — Πρόγραμμα Ανταγωνιστικότητα">
+    </div>
+  </div>
+
   <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
       <div class="footer-brand">
@@ -215,9 +224,9 @@
   </footer>
 
   <script src="js/main.js"></script>
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV/XN/WLcE=" crossorigin=""></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
   <script>
-    (function () {
+    window.addEventListener('load', function () {
       var map = L.map('contact-map', { scrollWheelZoom: false }).setView([38.85, 22.9], 7);
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
@@ -225,7 +234,7 @@
       }).addTo(map);
       L.marker([38.0911218, 23.7492388]).addTo(map).bindPopup('<strong>OSP Contractors</strong><br>Athens<br>Filadelfeias 161 &amp; Leukados, Acharnes');
       L.marker([39.554066, 21.775876]).addTo(map).bindPopup('<strong>OSP Contractors</strong><br>Trikala<br>Vasili Tsitsani 41');
-    })();
+    });
   </script>
 </body>
 </html>
