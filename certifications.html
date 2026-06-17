@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Certifications | OSP Contractors</title>
+  <meta name="description" content="OSP Contractors holds internationally recognised ISO certifications in quality management, occupational health & safety, and environmental management.">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .cert-cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2.5rem;
+    }
+    .cert-card {
+      background: #fff;
+      border: 1px solid #e5e5e5;
+      border-radius: 10px;
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .cert-card:hover {
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+      transform: translateY(-2px);
+    }
+    .cert-card-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--navy);
+      color: #fff;
+      font-weight: 800;
+      font-size: 1.05rem;
+      letter-spacing: 0.5px;
+      border-radius: 6px;
+      padding: 0.4rem 0.85rem;
+      align-self: flex-start;
+    }
+    .cert-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin: 0;
+    }
+    .cert-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.65;
+      flex: 1;
+    }
+    .cert-card .btn-cert {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--orange);
+      color: var(--navy);
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 0.6rem 1.2rem;
+      border-radius: var(--radius);
+      text-decoration: none;
+      transition: background 0.2s ease;
+      align-self: flex-start;
+    }
+    .cert-card .btn-cert:hover { background: #a89e32; }
+    .cert-overview-img {
+      max-width: 520px;
+      margin: 0 auto 2.5rem;
+      border-radius: 10px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <a class="skip-link" href="#main-content" data-i18n="nav.skip">Skip to main content</a>
+
+  <header class="site-header" role="banner">
+    <nav class="nav-inner" aria-label="Main navigation">
+      <a class="nav-logo" href="index.html" aria-label="OSP Contractors — go to homepage">
+        <img src="images/osp-logo.png" alt="OSP Contractors" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none">OSP Contractors</span>
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="nav-list" aria-label="Toggle navigation menu">&#9776;</button>
+      <ul class="nav-list" id="nav-list" role="list">
+        <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+        <li><a href="company.html" data-i18n="nav.company">Company</a></li>
+        <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+        <li><a href="significant-projects.html" data-i18n="nav.projects">Significant Projects</a></li>
+        <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+      </ul>
+      <div class="lang-switcher" role="group" aria-label="Language / Γλώσσα">
+        <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
+        <button class="lang-btn" data-lang="el" aria-pressed="false">ΕΛ</button>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+
+    <div class="page-hero">
+      <h1 data-i18n="cert.hero.title">Certifications</h1>
+      <p data-i18n="cert.hero.sub">Internationally recognised quality, safety and environmental certifications</p>
+    </div>
+
+    <section class="section" aria-labelledby="cert-page-heading">
+      <div class="container" style="max-width:900px;">
+
+        <span class="section-label" aria-hidden="true" data-i18n="cert.label">Quality Assurance</span>
+        <h2 class="section-title" id="cert-page-heading" data-i18n="cert.heading">Our Certifications</h2>
+        <p class="section-intro" data-i18n="cert.intro">
+          OSP Contractors holds internationally recognised certifications demonstrating our commitment
+          to quality management, occupational health &amp; safety, and environmental responsibility
+          across all our operations.
+        </p>
+
+        <img src="images/certifications.png"
+             class="cert-overview-img"
+             alt="ISO 9001, ISO 14001 and ISO 45001 certification logos held by OSP Contractors"
+             onerror="this.style.display='none'">
+
+        <div class="cert-cards">
+
+          <div class="cert-card">
+            <span class="cert-card-badge">ISO 9001</span>
+            <h3 data-i18n="cert.9001.title">Quality Management System</h3>
+            <p data-i18n="cert.9001.desc">
+              Certification to ISO 9001 confirms that our quality management system meets
+              international standards, ensuring consistent, high-quality service delivery
+              on every project.
+            </p>
+            <a href="documents/iso-9001.pdf" target="_blank" rel="noopener" class="btn-cert"
+               aria-label="Download ISO 9001 certificate (PDF)">
+              &#8595; <span data-i18n="cert.download">Download Certificate</span>
+            </a>
+          </div>
+
+          <div class="cert-card">
+            <span class="cert-card-badge">ISO 14001</span>
+            <h3 data-i18n="cert.14001.title">Environmental Management System</h3>
+            <p data-i18n="cert.14001.desc">
+              Certification to ISO 14001 demonstrates our structured approach to minimising
+              environmental impact and continuously improving our environmental performance
+              across all operations.
+            </p>
+            <a href="documents/iso-14001.pdf" target="_blank" rel="noopener" class="btn-cert"
+               aria-label="Download ISO 14001 certificate (PDF)">
+              &#8595; <span data-i18n="cert.download">Download Certificate</span>
+            </a>
+          </div>
+
+          <div class="cert-card">
+            <span class="cert-card-badge">ISO 45001</span>
+            <h3 data-i18n="cert.45001.title">Occupational Health &amp; Safety</h3>
+            <p data-i18n="cert.45001.desc">
+              Certification to ISO 45001 confirms our systematic management of occupational
+              health and safety risks, protecting our workforce and partners on every site.
+            </p>
+            <a href="documents/iso-45001.pdf" target="_blank" rel="noopener" class="btn-cert"
+               aria-label="Download ISO 45001 certificate (PDF)">
+              &#8595; <span data-i18n="cert.download">Download Certificate</span>
+            </a>
+          </div>
+
+          <div class="cert-card">
+            <span class="cert-card-badge" style="background:var(--orange);color:var(--navy);">Policy</span>
+            <h3 data-i18n="cert.eqp.title">Quality &amp; Environment Policy</h3>
+            <p data-i18n="cert.eqp.desc">
+              Our integrated Quality and Environment Policy sets out the principles and
+              commitments that guide every aspect of our work, from planning through
+              to project completion.
+            </p>
+            <a href="documents/quality-environment-policy.pdf" target="_blank" rel="noopener" class="btn-cert"
+               aria-label="Download Quality and Environment Policy (PDF)">
+              &#8595; <span data-i18n="cert.download.policy">View Policy</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- EU / ESPA Co-funding (Regulation EU 1060/2021) -->
+  <div class="espa-banner" role="complementary" aria-label="Ευρωπαϊκή χρηματοδότηση — European Union co-funding">
+    <div class="container">
+      <img src="images/eu/espalogo.jpg"
+           alt="Με τη συγχρηματοδότηση της Ευρωπαϊκής Ένωσης — ΕΣΠΑ 2021-2027 — Πρόγραμμα Ανταγωνιστικότητα">
+    </div>
+  </div>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-inner">
+      <div class="footer-brand">
+        <img src="images/osp-logo-white.png" alt="OSP Contractors" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+        <span style="display:none; font-size:1.2rem; font-weight:700; margin-bottom:1rem; display:block">OSP Contractors</span>
+        <p>
+          <span data-i18n="footer.brand">A rapidly growing telecom infrastructure company delivering design, implementation and maintenance services for fixed telecom networks across Greece.</span>
+        </p>
+      </div>
+      <nav aria-label="Footer navigation">
+        <h2 class="footer-heading" data-i18n="footer.nav.title">Navigation</h2>
+        <ul class="footer-links" role="list">
+          <li><a href="index.html" data-i18n="nav.home">Home</a></li>
+          <li><a href="company.html" data-i18n="nav.company">Company</a></li>
+          <li><a href="services.html" data-i18n="nav.services">Services</a></li>
+          <li><a href="significant-projects.html" data-i18n="nav.projects">Significant Projects</a></li>
+          <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Policies">
+        <h2 class="footer-heading" data-i18n="footer.policies.title">Policies</h2>
+        <ul class="footer-links" role="list">
+          <li><a href="hr-policy.pdf" data-i18n="footer.hr-policy">HR Policy</a></li>
+          <li><a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+        </ul>
+      </nav>
+      <div>
+        <h2 class="footer-heading" data-i18n="footer.contact.title">Contact Info</h2>
+        <address>
+          <div class="footer-contact-item">
+            <span aria-hidden="true">&#128205;</span>
+            <div>
+              <strong style="font-size:0.8rem;opacity:0.6;display:block;margin-bottom:0.2rem;">Athens</strong>
+              <p style="font-style:normal;opacity:0.8;font-size:0.9rem;">
+                Filadelfeias 161 &amp; Leukados<br>PO 136 71, Acharnes
+              </p>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <span aria-hidden="true">&#128205;</span>
+            <div>
+              <strong style="font-size:0.8rem;opacity:0.6;display:block;margin-bottom:0.2rem;">Trikala</strong>
+              <p style="font-style:normal;opacity:0.8;font-size:0.9rem;">
+                Vasili Tsitsani 41<br>PO 421 00, Trikala
+              </p>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <span aria-hidden="true">&#128222;</span>
+            <div>
+              <a href="tel:+302105772107" style="opacity:0.8;font-size:0.9rem;">+30 210 577 2107</a><br>
+              <a href="tel:+302102850515" style="opacity:0.8;font-size:0.9rem;">+30 210 285 0515</a>
+            </div>
+          </div>
+          <div class="footer-contact-item">
+            <span aria-hidden="true">&#9993;</span>
+            <a href="mailto:info@osp-contractors.gr">info@osp-contractors.gr</a>
+          </div>
+        </address>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> OSP Contractors. All rights reserved.</p>
+      <p>
+        <a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a> &middot;
+        <a href="hr-policy.pdf" data-i18n="footer.hr-policy">HR Policy</a>
+      </p>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/translations.js"></script>
+  <script src="js/i18n.js"></script>
+</body>
+</html>
