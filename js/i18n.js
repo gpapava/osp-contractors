@@ -60,11 +60,43 @@
       btn.setAttribute('aria-pressed', active ? 'true' : 'false');
     });
 
-    localStorage.setItem(KEY, lang);
+    applyAttrs(lang);
+
+    try { localStorage.setItem(KEY, lang); } catch (e) { /* storage may be blocked */ }
+
+    // Let other scripts (main.js) refresh their own dynamic labels
+    document.dispatchEvent(new CustomEvent('langchange', { detail: { lang: lang } }));
+  }
+
+  // Translate alt / aria-label (WCAG 1.1.1, 3.1.2), <title> and meta description.
+  // Original English text is kept in data-orig-* so EN can be restored.
+  // Only strings listed in ATTR_EL are touched; labels set dynamically by
+  // main.js are not in the map and are left alone.
+  function applyAttrs(lang) {
+    var map = (typeof ATTR_EL !== 'undefined') ? ATTR_EL : {};
+    function swap(el, attr) {
+      var store = 'data-orig-' + attr;
+      var orig = el.hasAttribute(store) ? el.getAttribute(store) : el.getAttribute(attr);
+      if (orig === null || map[orig] === undefined) return;
+      if (!el.hasAttribute(store)) el.setAttribute(store, orig);
+      el.setAttribute(attr, lang === 'el' ? map[orig] : orig);
+    }
+    document.querySelectorAll('[alt], [aria-label]').forEach(function (el) {
+      if (el.hasAttribute('alt')) swap(el, 'alt');
+      if (el.hasAttribute('aria-label')) swap(el, 'aria-label');
+    });
+    var meta = document.querySelector('meta[name="description"]');
+    if (meta) swap(meta, 'content');
+    if (!document.documentElement.hasAttribute('data-orig-title')) {
+      document.documentElement.setAttribute('data-orig-title', document.title);
+    }
+    var origTitle = document.documentElement.getAttribute('data-orig-title');
+    if (map[origTitle] !== undefined) document.title = lang === 'el' ? map[origTitle] : origTitle;
   }
 
   function init() {
-    var saved = localStorage.getItem(KEY) || DEFAULT;
+    var saved = DEFAULT;
+    try { saved = localStorage.getItem(KEY) || DEFAULT; } catch (e) { /* storage may be blocked */ }
     applyLang(saved);
     document.querySelectorAll('.lang-btn').forEach(function (btn) {
       btn.addEventListener('click', function () {

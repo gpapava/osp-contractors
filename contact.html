@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
   <style>
-    #contact-map { height: 610px; width: 100%; }
+    #contact-map { height: 610px; width: 100%; position: relative; z-index: 0; isolation: isolate; } /* keep Leaflet's high z-index panes below the sticky header */
     .leaflet-container img { max-width: none !important; }
   </style>
 </head>
@@ -29,17 +29,32 @@
         <li><a href="services.html" data-i18n="nav.services">Services</a></li>
         <li><a href="significant-projects.html" data-i18n="nav.projects">Significant Projects</a></li>
         <li><a href="contact.html" aria-current="page" data-i18n="nav.contact">Contact</a></li>
-      <div class="lang-switcher" role="group" aria-label="Language / Γλώσσα">
-        <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
-        <button class="lang-btn" data-lang="el" aria-pressed="false">ΕΛ</button>
-      </div>
+        <li>
+          <div class="lang-switcher" role="group" aria-label="Language / Γλώσσα">
+            <button class="lang-btn" data-lang="en" lang="en" aria-label="English" aria-pressed="true">EN</button>
+            <button class="lang-btn" data-lang="el" lang="el" aria-label="Ελληνικά" aria-pressed="false">ΕΛ</button>
+          </div>
+        </li>
+      </ul>
     </nav>
   </header>
+
+  <!-- EU / ESPA co-funding banner, directly below the menu (Regulation EU 1060/2021) -->
+  <div class="espa-banner" lang="el" role="complementary" aria-label="Ευρωπαϊκή χρηματοδότηση — European Union co-funding">
+    <div class="container">
+      <a href="documents/poster_corrected_1_1.pdf" target="_blank" rel="noopener" aria-label="Ανοίξτε την αφίσα ΕΣΠΑ (PDF, νέα καρτέλα)">
+        <img src="images/eu/espalogo.jpg"
+             alt="Με τη συγχρηματοδότηση της Ευρωπαϊκής Ένωσης — ΕΣΠΑ 2021-2027 — Πρόγραμμα Ανταγωνιστικότητα">
+      </a>
+      <p class="espa-alt"><a href="espa-poster.html">Προσβάσιμη έκδοση της αφίσας (HTML)</a></p>
+    </div>
+  </div>
+
 
   <main id="main-content">
 
     <!-- Full-width map -->
-    <div id="contact-map" aria-label="Map showing OSP Contractors office locations in Athens and Trikala"></div>
+    <div id="contact-map" role="region" aria-label="Map showing OSP Contractors office locations in Athens and Trikala"></div>
 
     <!-- Dark strip -->
     <div class="contact-strip" aria-hidden="true"></div>
@@ -66,7 +81,9 @@
           <!-- Form block -->
           <div class="contact-form-wrapper">
             <h1 class="contact-heading-large" id="contact-heading">Contact Us</h1>
-            <form action="#" method="post" novalidate aria-label="Contact form">
+            <form action="contact.php" method="post" novalidate aria-label="Contact form">
+
+              <div id="form-errors" class="form-summary" role="alert" tabindex="-1" hidden></div>
 
               <div class="form-group">
                 <label for="full-name">Name <span class="required" aria-hidden="true">*</span></label>
@@ -78,7 +95,9 @@
                   required
                   aria-required="true"
                   placeholder="Your full name"
+                  aria-describedby="full-name-error"
                 >
+                <p class="field-error" id="full-name-error" hidden></p>
               </div>
 
               <div class="form-group">
@@ -91,7 +110,9 @@
                   required
                   aria-required="true"
                   placeholder="your@email.com"
+                  aria-describedby="email-error"
                 >
+                <p class="field-error" id="email-error" hidden></p>
               </div>
 
               <div class="form-group">
@@ -103,7 +124,9 @@
                   required
                   aria-required="true"
                   placeholder="How can we help?"
+                  aria-describedby="subject-error"
                 >
+                <p class="field-error" id="subject-error" hidden></p>
               </div>
 
               <div class="form-group">
@@ -114,7 +137,9 @@
                   required
                   aria-required="true"
                   placeholder="Your message..."
+                  aria-describedby="message-error"
                 ></textarea>
+                <p class="field-error" id="message-error" hidden></p>
               </div>
 
               <div class="form-checkbox">
@@ -124,13 +149,21 @@
                   name="agreement"
                   required
                   aria-required="true"
-                  aria-describedby="gdpr-desc"
+                  aria-describedby="gdpr-error"
                 >
-                <label for="gdpr" id="gdpr-desc">
+                <label for="gdpr" id="gdpr-label">
                   I agree with the <a href="privacy-policy.html">Terms of Use and Privacy Policy</a>
                   and I declare that I have read the information that is required in accordance with
                   <a href="https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=uriserv:OJ.L_.2016.119.01.0001.01.ENG&toc=OJ:L:2016:119:TOC" target="_blank" rel="noopener">Article 13 of GDPR.</a>
                 </label>
+              </div>
+
+              <p class="field-error" id="gdpr-error" hidden></p>
+
+              <!-- Honeypot for spam bots: hidden from sighted users, keyboard and screen readers -->
+              <div class="hp-field" aria-hidden="true">
+                <label for="website">Leave this field empty</label>
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
               </div>
 
               <div class="form-submit">
@@ -138,6 +171,7 @@
               </div>
 
             </form>
+            <div id="form-status" class="form-status" role="status" tabindex="-1" hidden></div>
           </div>
 
         </div>
@@ -146,21 +180,11 @@
 
   </main>
 
-  <!-- EU / ESPA Co-funding (Regulation EU 1060/2021) -->
-  <div class="espa-banner" role="complementary" aria-label="Ευρωπαϊκή χρηματοδότηση — European Union co-funding">
-    <div class="container">
-      <a href="documents/poster_A3.pdf" target="_blank" rel="noopener" aria-label="Ανοίξτε το αφίσα ΕΣΠΑ (PDF)">
-        <img src="images/eu/espalogo.jpg"
-             alt="Με τη συγχρηματοδότηση της Ευρωπαϊκής Ένωσης — ΕΣΠΑ 2021-2027 — Πρόγραμμα Ανταγωνιστικότητα">
-      </a>
-    </div>
-  </div>
-
   <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
       <div class="footer-brand">
         <img src="images/osp-logo-white.png" alt="OSP Contractors" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-        <span style="display:none; font-size:1.2rem; font-weight:700; margin-bottom:1rem; display:block">OSP Contractors</span>
+        <span style="display:none; font-size:1.2rem; font-weight:700; margin-bottom:1rem">OSP Contractors</span>
         <p>
           <span data-i18n="footer.brand">A rapidly growing telecom infrastructure company delivering design, implementation and maintenance services for fixed telecom networks across Greece.</span>
         </p>
@@ -178,9 +202,10 @@
       <nav aria-label="Policies">
         <h2 class="footer-heading" data-i18n="footer.policies.title">Policies</h2>
         <ul class="footer-links" role="list">
-          <li><a href="hr-policy.pdf" data-i18n="footer.hr-policy">Anti-Harassment &amp; Whistleblowing Policy</a></li>
+          <li><a href="hr-policy.html" data-i18n="footer.hr-policy">Anti-Harassment &amp; Whistleblowing Policy</a></li>
           <li><a href="documents/quality-environment-policy.pdf" target="_blank" rel="noopener" data-i18n="footer.qe-policy">Quality &amp; Environment Policy</a></li>
           <li><a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
+          <li><a href="accessibility-statement.html" data-i18n="footer.accessibility">Accessibility Statement</a></li>
         </ul>
       </nav>
       <div>
@@ -222,7 +247,7 @@
       <p>&copy; <span id="year"></span> OSP Contractors. All rights reserved.</p>
       <p>
         <a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a> &middot;
-        <a href="hr-policy.pdf" data-i18n="footer.hr-policy">Anti-Harassment &amp; Whistleblowing Policy</a>
+        <a href="hr-policy.html" data-i18n="footer.hr-policy">Anti-Harassment &amp; Whistleblowing Policy</a>
       </p>
     </div>
   </footer>
@@ -241,6 +266,12 @@
     });
   </script>
   <script src="js/translations.js"></script>
+  <script src="js/translations-attrs.js"></script>
   <script src="js/i18n.js"></script>
+  <!-- Skynet "All in One Accessibility" widget (optional extra; same embed as the current live site).
+       It does not replace the WCAG fixes in this site. Third-party script: mention in the Privacy Policy. -->
+  <script id="aioa-adawidget"
+          src="https://www.skynettechnologies.com/accessibility/js/all-in-one-accessibility-js-widget-minify.js?colorcode=#420083&amp;token=&amp;position=bottom_right"
+          async></script>
 </body>
 </html>
