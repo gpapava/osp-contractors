@@ -1016,3 +1016,9 @@ body .accessibility-trigger button:focus-visible {
 
 /* Keep the video pause control clear of the widget (it sits bottom-right) */
 .hero-video-toggle { right: auto; left: 1.5rem; }
+
+/* On small screens the hero's last button spans the full width: leave room under it
+   so the video pause button (bottom-left) never covers it. */
+@media (max-width: 680px) {
+  .hero { padding-bottom: 5.5rem; }
+}
