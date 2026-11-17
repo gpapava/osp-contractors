@@ -4,10 +4,12 @@
  * Receives a POST from contact.html (via fetch) and emails it to the company.
  * Returns JSON: {"ok":true} or {"ok":false,"error":"..."}.
  *
+ * Compatible with PHP 5.4 and newer (the hosting currently runs PHP 5.4).
+ *
  * CONFIG: edit these two addresses if needed.
  *  - $to   : where messages are delivered
- *  - $from : must be an address on the website's own domain (anti-spam rules
- *            on the hosting reject or junk mail sent "from" other domains)
+ *  - $from : must be an address on the website's own domain (the SPF record of
+ *            osp-contractors.gr already authorises this server)
  */
 $to   = 'info@osp-contractors.gr';
 $from = 'no-reply@osp-contractors.gr';
@@ -15,32 +17,53 @@ $from = 'no-reply@osp-contractors.gr';
 header('Content-Type: application/json; charset=UTF-8');
 header('Cache-Control: no-store');
 
-function respond(int $status, bool $ok, string $error = ''): void {
+function respond($status, $ok, $error = '') {
     http_response_code($status);
-    echo json_encode($ok ? ['ok' => true] : ['ok' => false, 'error' => $error]);
+    if ($ok) {
+        echo json_encode(array('ok' => true));
+    } else {
+        echo json_encode(array('ok' => false, 'error' => $error));
+    }
     exit;
 }
 
-if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
+// Read a POST value as a string ('' if missing or not a string).
+function post_value($key) {
+    if (!isset($_POST[$key]) || !is_string($_POST[$key])) {
+        return '';
+    }
+    return $_POST[$key];
+}
+
+// Multibyte-safe substring (falls back to substr if mbstring is missing).
+function cut($v, $max) {
+    if (function_exists('mb_substr')) {
+        return mb_substr($v, 0, $max, 'UTF-8');
+    }
+    return substr($v, 0, $max);
+}
+
+// Strip CR/LF so values can never inject extra mail headers.
+function clean_line($v, $max) {
+    $v = preg_replace('/[\r\n\t]+/', ' ', $v);
+    return trim(cut($v, $max));
+}
+
+$method = isset($_SERVER['REQUEST_METHOD']) ? $_SERVER['REQUEST_METHOD'] : '';
+if ($method !== 'POST') {
     respond(405, false, 'method');
 }
 
 // Honeypot: real users never see or fill this field. Pretend success to bots.
-if (!empty($_POST['website'] ?? '')) {
+if (post_value('website') !== '') {
     respond(200, true);
 }
 
-// Strip CR/LF so values can never inject extra mail headers.
-function clean_line(string $v, int $max): string {
-    $v = preg_replace('/[\r\n\t]+/', ' ', $v);
-    return trim(mb_substr($v, 0, $max, 'UTF-8'));
-}
-
-$name    = clean_line((string)($_POST['name'] ?? ''), 120);
-$email   = clean_line((string)($_POST['email'] ?? ''), 200);
-$subject = clean_line((string)($_POST['subject'] ?? ''), 200);
-$message = trim(mb_substr((string)($_POST['message'] ?? ''), 0, 5000, 'UTF-8'));
-$agreed  = !empty($_POST['agreement']);
+$name    = clean_line(post_value('name'), 120);
+$email   = clean_line(post_value('email'), 200);
+$subject = clean_line(post_value('subject'), 200);
+$message = trim(cut(post_value('message'), 5000));
+$agreed  = post_value('agreement') !== '';
 
 if ($name === '' || $subject === '' || $message === '' || !$agreed
     || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -56,14 +79,14 @@ $body .= $message . "\n\n";
 $body .= "------------------------------------------------------------\n";
 $body .= "Ο αποστολέας δήλωσε ότι διάβασε την Πολιτική Απορρήτου.\n";
 
-$headers = [
+$headers = array(
     'From: OSP Contractors website <' . $from . '>',
     'Reply-To: ' . $email,
     'MIME-Version: 1.0',
     'Content-Type: text/plain; charset=UTF-8',
     'Content-Transfer-Encoding: 8bit',
     'X-Mailer: PHP/' . phpversion(),
-];
+);
 
 $encodedSubject = '=?UTF-8?B?' . base64_encode('[osp-contractors.gr] ' . $subject) . '?=';
 
