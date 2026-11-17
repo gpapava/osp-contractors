@@ -587,7 +587,7 @@ a { color: inherit; text-decoration: none; }
 }
 .espa-banner img {
   width: 100%;
-  max-width: 420px;
+  max-width: 560px;
   height: auto;
   margin: 0 auto;
   display: block;
@@ -993,3 +993,21 @@ h1, h2, h3, h4, p, li, a, span, label { overflow-wrap: break-word; }
   clip: auto; white-space: normal; text-align: center; font-size: 0.9rem;
 }
 .espa-alt a { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
+
+/* === Skynet accessibility widget: always bottom-right ===
+   The widget picks its own position class (aioa_top_center, aioa_middle_right, ...)
+   depending on its server-side settings. Pin it here so it never covers the menu. */
+body .accessibility-trigger button {
+  top: auto !important;
+  left: auto !important;
+  bottom: 20px !important;
+  right: 20px !important;
+  transform: none !important;
+}
+body .accessibility-trigger button:hover,
+body .accessibility-trigger button:focus-visible {
+  transform: scale(1.1) !important;
+}
+
+/* Keep the video pause control clear of the widget (it sits bottom-right) */
+.hero-video-toggle { right: auto; left: 1.5rem; }
