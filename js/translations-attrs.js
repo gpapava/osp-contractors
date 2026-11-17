@@ -163,6 +163,8 @@ var ATTR_EL = {
   'Privacy Policy | OSP Contractors': 'Πολιτική Απορρήτου | OSP Contractors',
 
   /* ---- Meta descriptions ---- */
+  'Accessibility Statement | OSP Contractors': 'Δήλωση Προσβασιμότητας | OSP Contractors',
+  'Accessibility statement of OSP Contractors: our WCAG 2.1 AA target, what we have done, known limitations and how to contact us.': 'Δήλωση προσβασιμότητας της OSP Contractors: ο στόχος μας WCAG 2.1 AA, όσα έχουμε κάνει, γνωστοί περιορισμοί και τρόποι επικοινωνίας.',
   'OSP Contractors designs, implements and maintains fixed telecom networks across Greece. Engineering, civil works, cable installation, splicing and more.': 'Η OSP Contractors σχεδιάζει, υλοποιεί και συντηρεί σταθερά δίκτυα τηλεπικοινωνιών σε όλη την Ελλάδα. Μελέτες, πολιτικά έργα, εγκατάσταση καλωδίων, συγκολλήσεις και άλλα.',
   'Learn about OSP Contractors — our history, mission, values and the experienced team behind Greece\'s telecom infrastructure projects.': 'Γνωρίστε την OSP Contractors — την ιστορία, την αποστολή, τις αξίες και την έμπειρη ομάδα πίσω από τα τηλεπικοινωνιακά έργα υποδομής στην Ελλάδα.',
   'OSP Contractors offers engineering services, civil works, cable installation, cable recovery, customer premises installation, and fibre splicing across Greece.': 'Η OSP Contractors προσφέρει υπηρεσίες μελετών, πολιτικά έργα, εγκατάσταση και ανάκτηση καλωδίων, εγκαταστάσεις σε χώρους πελατών και συγκόλληση οπτικών ινών σε όλη την Ελλάδα.',
