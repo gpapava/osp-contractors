@@ -149,10 +149,10 @@ a { color: inherit; text-decoration: none; }
   padding: 7rem 1.5rem;
   /* Fill the rest of the first screen below the menu (72px) and the ESPA banner,
      so more of the background video is visible. Banner height = 2rem padding +
-     image height (image is at most 720px wide, ratio 80/613). */
+     image height (image is at most 720px wide, ratio 121/1024). */
   min-height: 480px;
-  min-height: max(480px, calc(100vh - 72px - 2rem - min(720px, 100vw - 3rem) * 0.1305));
-  min-height: max(480px, calc(100svh - 72px - 2rem - min(720px, 100vw - 3rem) * 0.1305));
+  min-height: max(480px, calc(100vh - 72px - 2rem - min(720px, 100vw - 3rem) * 0.1182));
+  min-height: max(480px, calc(100svh - 72px - 2rem - min(720px, 100vw - 3rem) * 0.1182));
   text-align: center;
   position: relative;
   isolation: isolate;
@@ -592,7 +592,7 @@ a { color: inherit; text-decoration: none; }
 }
 .espa-banner img {
   width: 100%;
-  max-width: 720px;   /* native image is 613px wide: above that it is upscaled and gets softer */
+  max-width: 720px;   /* the banner image is 1024px wide, so it stays sharp up to that width */
   height: auto;
   margin: 0 auto;
   display: block;
@@ -1016,3 +1016,9 @@ body .accessibility-trigger button:focus-visible {
 
 /* Keep the video pause control clear of the widget (it sits bottom-right) */
 .hero-video-toggle { right: auto; left: 1.5rem; }
+
+/* On small screens the hero's last button spans the full width: leave room under it
+   so the video pause button (bottom-left) never covers it. */
+@media (max-width: 680px) {
+  .hero { padding-bottom: 5.5rem; }
+}
