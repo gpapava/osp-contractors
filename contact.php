@@ -14,6 +14,22 @@
 $to   = 'info@osp-contractors.gr';
 $from = 'no-reply@osp-contractors.gr';
 
+// Optional extra recipients. They are read from contact-config.php, which is kept
+// OUT of the (public) repository and only exists on the server. See
+// contact-config.example.php for the format.
+$recipients = array($to);
+$configFile = dirname(__FILE__) . '/contact-config.php';
+if (is_file($configFile)) {
+    $cfg = include $configFile;
+    if (is_array($cfg) && isset($cfg['extra_recipients']) && is_array($cfg['extra_recipients'])) {
+        foreach ($cfg['extra_recipients'] as $addr) {
+            if (is_string($addr) && filter_var($addr, FILTER_VALIDATE_EMAIL)) {
+                $recipients[] = $addr;
+            }
+        }
+    }
+}
+
 header('Content-Type: application/json; charset=UTF-8');
 header('Cache-Control: no-store');
 
@@ -90,8 +106,14 @@ $headers = array(
 
 $encodedSubject = '=?UTF-8?B?' . base64_encode('[osp-contractors.gr] ' . $subject) . '?=';
 
+// One mail per recipient, so a problem with one address never blocks the others.
 // The 5th argument sets the envelope sender, which improves deliverability.
-$sent = @mail($to, $encodedSubject, $body, implode("\r\n", $headers), '-f' . $from);
+$sent = false;
+foreach ($recipients as $recipient) {
+    if (@mail($recipient, $encodedSubject, $body, implode("\r\n", $headers), '-f' . $from)) {
+        $sent = true;
+    }
+}
 
 if (!$sent) {
     error_log('contact.php: mail() failed');
