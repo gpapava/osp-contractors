@@ -24,12 +24,27 @@
         <li><a href="services.html" data-i18n="nav.services">Services</a></li>
         <li><a href="significant-projects.html" aria-current="page" data-i18n="nav.projects">Significant Projects</a></li>
         <li><a href="contact.html" data-i18n="nav.contact">Contact</a></li>
-      <div class="lang-switcher" role="group" aria-label="Language / Γλώσσα">
-        <button class="lang-btn" data-lang="en" aria-pressed="true">EN</button>
-        <button class="lang-btn" data-lang="el" aria-pressed="false">ΕΛ</button>
-      </div>
+        <li>
+          <div class="lang-switcher" role="group" aria-label="Language / Γλώσσα">
+            <button class="lang-btn" data-lang="en" lang="en" aria-label="English" aria-pressed="true">EN</button>
+            <button class="lang-btn" data-lang="el" lang="el" aria-label="Ελληνικά" aria-pressed="false">ΕΛ</button>
+          </div>
+        </li>
+      </ul>
     </nav>
   </header>
+
+  <!-- EU / ESPA co-funding banner, directly below the menu (Regulation EU 1060/2021) -->
+  <div class="espa-banner" lang="el" role="complementary" aria-label="Ευρωπαϊκή χρηματοδότηση — European Union co-funding">
+    <div class="container">
+      <a href="documents/poster_corrected_1_1.pdf" target="_blank" rel="noopener" aria-label="Ανοίξτε την αφίσα ΕΣΠΑ (PDF, νέα καρτέλα)">
+        <img src="images/eu/espalogo.jpg"
+             alt="Με τη συγχρηματοδότηση της Ευρωπαϊκής Ένωσης — ΕΣΠΑ 2021-2027 — Πρόγραμμα Ανταγωνιστικότητα">
+      </a>
+      <p class="espa-alt"><a href="espa-poster.html">Προσβάσιμη έκδοση της αφίσας (HTML)</a></p>
+    </div>
+  </div>
+
 
   <main id="main-content">
 
@@ -40,12 +55,12 @@
 
     <!-- Project filter bar -->
     <div class="proj-filter-bar" role="group" aria-label="Filter projects by category">
-      <button class="proj-filter-btn active" data-filter="all">All</button>
-      <button class="proj-filter-btn" data-filter="ftth">FTTH</button>
-      <button class="proj-filter-btn" data-filter="nga">NGA FTTC</button>
-      <button class="proj-filter-btn" data-filter="adhoc">Ad-Hoc</button>
-      <button class="proj-filter-btn" data-filter="recovery">Recovery</button>
-      <button class="proj-filter-btn" data-filter="pilot">Pilot</button>
+      <button class="proj-filter-btn active" data-filter="all" aria-pressed="true">All</button>
+      <button class="proj-filter-btn" data-filter="ftth" aria-pressed="false">FTTH</button>
+      <button class="proj-filter-btn" data-filter="nga" aria-pressed="false">NGA FTTC</button>
+      <button class="proj-filter-btn" data-filter="adhoc" aria-pressed="false">Ad-Hoc</button>
+      <button class="proj-filter-btn" data-filter="recovery" aria-pressed="false">Recovery</button>
+      <button class="proj-filter-btn" data-filter="pilot" aria-pressed="false">Pilot</button>
     </div>
 
     <!-- 1. FTTH Network Deployments -->
@@ -61,7 +76,7 @@
               <span>&#128205; All over Greece</span>
               <span>&#128197; 2018 – 2023 (ongoing)</span>
             </div>
-            <div class="project-stats" style="margin-top:1rem;" aria-label="Project statistics">
+            <div class="project-stats" style="margin-top:1rem;" role="group" aria-label="Project statistics">
               <span class="stat-badge">310 km Mini Trenching</span>
               <span class="stat-badge">580 km FO Cables Installed</span>
               <span class="stat-badge">20,000 Buildings Passed</span>
@@ -94,7 +109,7 @@
               <span>&#128205; Prefecture of Attica</span>
               <span>&#128197; 2021 – 2023 (ongoing)</span>
             </div>
-            <div class="project-stats" style="margin-top:1rem;" aria-label="Project statistics">
+            <div class="project-stats" style="margin-top:1rem;" role="group" aria-label="Project statistics">
               <span class="stat-badge">2,000 Buildings Connected</span>
             </div>
           </div>
@@ -125,7 +140,7 @@
               <span>&#128205; All over Greece</span>
               <span>&#128197; 2014 – 2020</span>
             </div>
-            <div class="project-stats" style="margin-top:1rem;" aria-label="Project statistics">
+            <div class="project-stats" style="margin-top:1rem;" role="group" aria-label="Project statistics">
               <span class="stat-badge">105 km Mini Trenching</span>
               <span class="stat-badge">385 km FO Cables Installed</span>
               <span class="stat-badge">433 FTTC Cabinets Installed</span>
@@ -158,7 +173,7 @@
               <span>&#128205; Northern Greece</span>
               <span>&#128197; 2012 – 2020</span>
             </div>
-            <div class="project-stats" style="margin-top:1rem;" aria-label="Project statistics">
+            <div class="project-stats" style="margin-top:1rem;" role="group" aria-label="Project statistics">
               <span class="stat-badge">275 km Mini Trenching</span>
               <span class="stat-badge">748 km FO Cables Installed</span>
             </div>
@@ -190,7 +205,7 @@
               <span>&#128205; All over Greece</span>
               <span>&#128197; 2012 – 2021</span>
             </div>
-            <div class="project-stats" style="margin-top:1rem;" aria-label="Project statistics">
+            <div class="project-stats" style="margin-top:1rem;" role="group" aria-label="Project statistics">
               <span class="stat-badge">940 km Cables Recovered</span>
               <span class="stat-badge">~14,000 tonnes Copper Dismantled</span>
             </div>
@@ -222,7 +237,7 @@
               <span>&#128205; Rhodes</span>
               <span>&#128197; 2017 – 2018</span>
             </div>
-            <div class="project-stats" style="margin-top:1rem;" aria-label="Project statistics">
+            <div class="project-stats" style="margin-top:1rem;" role="group" aria-label="Project statistics">
               <span class="stat-badge">420 Homes Passed</span>
               <span class="stat-badge">25 km FO Cables Installed</span>
               <span class="stat-badge">1 FTTH Cabinet Installed</span>
@@ -255,7 +270,7 @@
               <span>&#128205; Trikala</span>
               <span>&#128197; 2017</span>
             </div>
-            <div class="project-stats" style="margin-top:1rem;" aria-label="Project statistics">
+            <div class="project-stats" style="margin-top:1rem;" role="group" aria-label="Project statistics">
               <span class="stat-badge">20 FO Access Points Installed</span>
               <span class="stat-badge">5 km FO Cables Installed</span>
               <span class="stat-badge">Smart City &amp; Open Mall Applications</span>
@@ -288,21 +303,11 @@
 
   </main>
 
-  <!-- EU / ESPA Co-funding (Regulation EU 1060/2021) -->
-  <div class="espa-banner" role="complementary" aria-label="Ευρωπαϊκή χρηματοδότηση — European Union co-funding">
-    <div class="container">
-      <a href="documents/poster_A3.pdf" target="_blank" rel="noopener" aria-label="Ανοίξτε το αφίσα ΕΣΠΑ (PDF)">
-        <img src="images/eu/espalogo.jpg"
-             alt="Με τη συγχρηματοδότηση της Ευρωπαϊκής Ένωσης — ΕΣΠΑ 2021-2027 — Πρόγραμμα Ανταγωνιστικότητα">
-      </a>
-    </div>
-  </div>
-
   <footer class="site-footer" role="contentinfo">
     <div class="footer-inner">
       <div class="footer-brand">
         <img src="images/osp-logo-white.png" alt="OSP Contractors" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
-        <span style="display:none; font-size:1.2rem; font-weight:700; margin-bottom:1rem; display:block">OSP Contractors</span>
+        <span style="display:none; font-size:1.2rem; font-weight:700; margin-bottom:1rem">OSP Contractors</span>
         <p>
           <span data-i18n="footer.brand">A rapidly growing telecom infrastructure company delivering design, implementation and maintenance services for fixed telecom networks across Greece.</span>
         </p>
@@ -320,7 +325,7 @@
       <nav aria-label="Policies">
         <h2 class="footer-heading" data-i18n="footer.policies.title">Policies</h2>
         <ul class="footer-links" role="list">
-          <li><a href="hr-policy.pdf" data-i18n="footer.hr-policy">Anti-Harassment &amp; Whistleblowing Policy</a></li>
+          <li><a href="hr-policy.html" data-i18n="footer.hr-policy">Anti-Harassment &amp; Whistleblowing Policy</a></li>
           <li><a href="documents/quality-environment-policy.pdf" target="_blank" rel="noopener" data-i18n="footer.qe-policy">Quality &amp; Environment Policy</a></li>
           <li><a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a></li>
         </ul>
@@ -364,13 +369,14 @@
       <p>&copy; <span id="year"></span> OSP Contractors. All rights reserved.</p>
       <p>
         <a href="privacy-policy.html" data-i18n="footer.privacy">Privacy Policy</a> &middot;
-        <a href="hr-policy.pdf" data-i18n="footer.hr-policy">Anti-Harassment &amp; Whistleblowing Policy</a>
+        <a href="hr-policy.html" data-i18n="footer.hr-policy">Anti-Harassment &amp; Whistleblowing Policy</a>
       </p>
     </div>
   </footer>
 
   <script src="js/main.js"></script>
   <script src="js/translations.js"></script>
+  <script src="js/translations-attrs.js"></script>
   <script src="js/i18n.js"></script>
 </body>
 </html>

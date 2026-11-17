@@ -181,7 +181,7 @@ const TRANSLATIONS = {
       'privacy-policy': [
         ['.page-hero h1', 'Privacy Policy'],
         ['.page-hero p', 'How we collect, use and protect your personal data'],
-        ['[style*="text-muted"][style*="margin-bottom:2rem"]', 'Last updated: June 2025'],
+        ['#privacy-updated', 'Last updated: June 2025'],
         ['#privacy-heading', '1. Data Controller'],
         ['h2[style]:nth-of-type(2)', '2. Data We Collect'],
         ['h2[style]:nth-of-type(3)', '3. Legal Basis and Purpose'],
@@ -368,6 +368,7 @@ const TRANSLATIONS = {
       'privacy-policy': [
         ['.page-hero h1', 'Πολιτική Απορρήτου'],
         ['.page-hero p', 'Πώς συλλέγουμε, χρησιμοποιούμε και προστατεύουμε τα προσωπικά σας δεδομένα'],
+        ['#privacy-updated', 'Τελευταία ενημέρωση: Ιούνιος 2025'],
         ['#privacy-heading', '1. Υπεύθυνος Επεξεργασίας']
       ]
     }
