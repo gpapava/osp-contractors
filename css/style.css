@@ -982,5 +982,14 @@ h1, h2, h3, h4, p, li, a, span, label { overflow-wrap: break-word; }
 .doc-facts dt { font-weight: 700; color: var(--navy); }
 .doc-facts dd { margin: 0; }
 @media (max-width: 480px) { .doc-facts { grid-template-columns: 1fr; gap: 0.1rem; } .doc-facts dd { margin-bottom: 0.75rem; } }
-.espa-alt { text-align: center; margin-top: 0.5rem; font-size: 0.9rem; }
+/* Link to the accessible HTML version of the poster: hidden visually, available to
+   screen readers, and revealed when it receives keyboard focus (WCAG 2.4.7 / 1.1.1) */
+.espa-alt {
+  position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}
+.espa-alt:focus-within {
+  position: static; width: auto; height: auto; margin: 0.5rem 0 0; overflow: visible;
+  clip: auto; white-space: normal; text-align: center; font-size: 0.9rem;
+}
 .espa-alt a { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
