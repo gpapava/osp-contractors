@@ -587,7 +587,7 @@ a { color: inherit; text-decoration: none; }
 }
 .espa-banner img {
   width: 100%;
-  max-width: 560px;
+  max-width: 640px;   /* native image is 613px wide: do not go much beyond this or it gets blurry */
   height: auto;
   margin: 0 auto;
   display: block;
